@@ -1,0 +1,17 @@
+.header {
+   background-color: var(--light-wine);
+}
+
+.header > div {
+   height: 70px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   color: white;
+}
+
+.meals-number {
+   background-color: var(--light-wine);
+   padding: 0.5rem 1.5rem;
+   border-radius: 2rem;
+}

@@ -1,0 +1,33 @@
+.btn {
+
+   padding: 1rem 4rem;
+   color: white;
+   border-radius: 10rem;
+   display: flex;
+   align-items: center;
+   gap: 1.5rem;
+   cursor: pointer;
+   transition: background-color 0.2s ease;
+}
+
+.btn .meals-number {
+   background-color: var(--light-wine);
+}
+
+.btn.primary {
+   background-color: var(--dark-wine);
+}
+
+.btn.primary:hover {
+   background-color: #691f01;
+}
+
+.btn.secondary {
+   background-color: var(--light-wine);
+
+}
+
+.btn.secondary:hover {
+   background-color: var(--dark-wine);
+
+}
