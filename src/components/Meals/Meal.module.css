@@ -1,0 +1,48 @@
+.list-item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+   padding: 1.5rem 0;
+   text-align: start;
+}
+
+.list-item:last-child {
+   border-bottom: none;
+   margin: 0;
+}
+
+.list-item .amount {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+}
+
+.list-item p:nth-child(2) {
+   font-style: italic;
+
+}
+
+.list-item p:last-child {
+   color: rgb(211, 112, 0);
+   font-weight: bold;
+   font-size: 1.8rem;
+}
+
+.list-item label {
+   font-weight: bold;
+   margin-right: 2rem;
+}
+
+.list-item input {
+   width: 60px;
+   padding: 1rem;
+}
+
+.list-item .buttons {
+   display: flex;
+   gap: 1rem;
+   align-items: center;
+   margin-top: 1rem;
+}
+

@@ -1,19 +1,11 @@
-import styles from './Button.module.css';
+import './Button.css';
 
 export default function Button(props) {
 
-   let secondStyle = '';
-
-   if(props.className === 'primary') {
-      secondStyle = styles.primary;
-   }
-   if(props.className === 'secondary') {
-      secondStyle = styles.secondary;
-   }
 
    return (
       <button
-         className={`${styles.btn} ${secondStyle}`}
+         className={`btn ${props.className}`}
          onClick={props.onClick}
       >{props.children}</button>
    );

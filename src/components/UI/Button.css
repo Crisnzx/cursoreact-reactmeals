@@ -10,6 +10,10 @@
    transition: background-color 0.2s ease;
 }
 
+.btn.small-p {
+   padding: 1rem 3rem;
+}
+
 .btn .meals-number {
    background-color: var(--light-wine);
 }
@@ -30,4 +34,14 @@
 .btn.secondary:hover {
    background-color: var(--dark-wine);
 
+}
+
+.btn.tertiary {
+   border: 1px solid var(--dark-wine);
+   color: var(--dark-wine);
+   background-color: transparent;
+}
+
+.btn.tertiary:hover {
+   opacity: 0.6;
 }

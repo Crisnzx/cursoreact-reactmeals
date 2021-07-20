@@ -25,6 +25,6 @@
    margin-bottom: 3rem;
 }
 
-.card :last-child {
+.card > :last-child {
    margin-top: 1rem;
 }
