@@ -1,27 +1,15 @@
-import styles from './Meals.module.css';
-import Card from "../UI/Card";
-import meals from '../../dummy_meals';
-import Meal from "./Meal";
+import { Fragment } from 'react';
 
-export default function Meals(props) {
+import MealsSummary from './MealsSummary';
+import AvailableMeals from './AvailableMeals';
 
-   console.log(meals);
-   
-   return (
-      <Card className="primary">
-         <ul className={styles.list}>
-         {meals.map(meal => {
-            return (
-               <Meal 
-                  key={meal.id}
-                  title={meal.title}
-                  description={meal.description}
-                  price={meal.price}
-               />
-            );
-         })}               
+const Meals = () => {
+  return (
+    <Fragment>
+      <MealsSummary />
+      <AvailableMeals />
+    </Fragment>
+  );
+};
 
-         </ul>
-      </Card>
-   );
-}
+export default Meals;
