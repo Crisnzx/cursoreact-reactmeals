@@ -44,7 +44,7 @@ const AvailableMeals = () => {
       .catch(error => {
         setHttpError(error.message);
         setIsLoading(false);
-        console.log(error.message);
+        alert(error.message);
       });
   }, []);
 
