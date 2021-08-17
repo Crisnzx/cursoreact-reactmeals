@@ -1,45 +1,54 @@
 import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
-
-const DUMMY_MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
+import { useEffect, useState } from 'react';
 
 const AvailableMeals = () => {
-  async function loadUsers() {
-    const meals = await fetch(
-      'https://food-order-a04c2-default-rtdb.firebaseio.com/meals'
-    );
-    console.log(meals);
-  }
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState(false);
 
-  loadUsers();
+  useEffect(() => {
+    async function loadMeals() {
+      setHttpError(false);
 
-  const mealsList = DUMMY_MEALS.map(meal => (
+      const mealsResponse = await fetch(
+        'https://food-order-a04c2-default-rtdb.firebaseio.com/meals.json'
+      );
+      console.log(mealsResponse);
+      if (!mealsResponse.ok) {
+        throw new Error(
+          `Error ${mealsResponse.status} ${mealsResponse.statusText}`
+        );
+      }
+
+      // converting an object of objects to an array of objects
+      const mealsObj = await mealsResponse.json();
+      const mealsArr = [];
+      for (const key in mealsObj) {
+        mealsArr.push({
+          id: key,
+          name: mealsObj[key].name,
+          description: mealsObj[key].description,
+          price: mealsObj[key].price,
+        });
+      }
+
+      setMeals(mealsArr);
+
+      setIsLoading(false);
+    }
+
+    loadMeals()
+      .then()
+      .catch(error => {
+        setHttpError(error.message);
+        setIsLoading(false);
+        console.log(error.message);
+      });
+  }, []);
+
+  const mealsList = meals.map(meal => (
     <MealItem
       key={meal.id}
       id={meal.id}
@@ -48,6 +57,23 @@ const AvailableMeals = () => {
       price={meal.price}
     />
   ));
+
+  if (isLoading) {
+    return (
+      <section className={classes['meals-loading']}>
+        <h2>Loading...</h2>
+      </section>
+    );
+  }
+
+  if (httpError) {
+    return (
+      <section className={classes['meals-error']}>
+        <h2>Something went wrong...</h2>
+        <p>{httpError}</p>
+      </section>
+    );
+  }
 
   return (
     <section className={classes.meals}>

@@ -11,6 +11,22 @@
   padding: 0;
 }
 
+.meals-loading {
+  text-align: center;
+  color: white;
+}
+
+.meals-error {
+  background-color: rgb(255, 212, 212);
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 10px;
+  width: 40%;
+  margin: 20px auto 0;
+  text-align: center;
+  color: red;
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;
